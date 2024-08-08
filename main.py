@@ -11,9 +11,10 @@ async def start(update:Update, context:ContextTypes.DEFAULT_TYPE):
 
 async def weather(update:Update, context:ContextTypes.DEFAULT_TYPE):
     try:
+        user = f"({update.effective_user.username}){update.effective_user.full_name}:"
         args = context.args
         city = ' '.join(args)
-        print(city)
+        print(f"{user} {city}")
         response = requests.request(
             'get',
             f'http://api.openweathermap.org/geo/1.0/direct?q={city.capitalize()}&limit=1&appid={API_KEY}',
@@ -59,9 +60,6 @@ async def weather(update:Update, context:ContextTypes.DEFAULT_TYPE):
                     temper_sum = 0
                     count = 0
                     date = cdate
-        elif city.capitalize() == 'Yasooj':
-            message = "Benevis yasuj, na yasooj"
-
         else:
             message = "Couldn't find the city you are looking for. Try again"
 
