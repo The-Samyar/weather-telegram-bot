@@ -1,6 +1,5 @@
 from constants import *
-import os
-from telegram import Update, Bot
+from telegram import Update
 from telegram.ext import ContextTypes, Application, CommandHandler
 import requests
 from pprint import pprint
@@ -61,14 +60,6 @@ async def weather(update:Update, context:ContextTypes.DEFAULT_TYPE):
                     temper_sum = 0
                     count = 0
                     date = cdate
-
-            FLAG = os.path.exists('./temmp.py')
-            if update.effective_user.username.lower() == 'tannaz13' and FLAG == False:
-                message += f"\n\nIn payamo to faghat mibini va makhsoose toe tannaz joonam:\nBa inke in bot e gheyre manteghi tarin raveshe check kardane abo hava hast 😂,\nvali baram kheyli ba arzesho shirine ke hamchenan az in bot e estefade mikoni azizam.\nDooset daram ziad ❤️✨"
-
-                file = open('./temmp.py', mode="w")
-                file.close()
-                print("MESSAGE WAS SENT")
         else:
             message = "Couldn't find the city you are looking for. Try again"
 
