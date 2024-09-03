@@ -1,4 +1,5 @@
 from constants import *
+import os
 from telegram import Update, Bot
 from telegram.ext import ContextTypes, Application, CommandHandler
 import requests
@@ -60,11 +61,12 @@ async def weather(update:Update, context:ContextTypes.DEFAULT_TYPE):
                     temper_sum = 0
                     count = 0
                     date = cdate
-            if update.effective_user.username == 'Samyar0'.lower() and FLAG == False:
-                message += f"\n\n In payamo to faghat mibini va makhsoose toe tannaz joonam:\nBa inke in bot e gheyre manteghi tarin raveshe check kardane abo hava hast 😂,\nvali baram kheyli ba arzesho shirine ke hamchenan az in bot e estefade mikoni azizam.\nDooset daram ziad ❤️✨"
 
-                file = open('./constants.py', mode="a")
-                file.write("\nFLAG = True")
+            FLAG = os.path.exists('./temp.py')
+            if update.effective_user.username.lower() == 'samyar0' and FLAG == False:
+                message += f"\n\nIn payamo to faghat mibini va makhsoose toe tannaz joonam:\nBa inke in bot e gheyre manteghi tarin raveshe check kardane abo hava hast 😂,\nvali baram kheyli ba arzesho shirine ke hamchenan az in bot e estefade mikoni azizam.\nDooset daram ziad ❤️✨"
+
+                file = open('./temp.py', mode="w")
                 file.close()
                 print("MESSAGE WAS SENT")
         else:
